@@ -3,6 +3,7 @@ from __future__ import division
 import string
 import random
 
+
 # Self Check
 # Here’s a self check that really covers everything so far. You may have heard of the infinite monkey theorem? The theorem states that a monkey hitting keys at random on a typewriter keyboard for an infinite amount of time will almost surely type a given text, such as the complete works of William Shakespeare. Well, suppose we replace a monkey with a Python function. How long do you think it would take for a Python function to generate just one sentence of Shakespeare? The sentence we’ll shoot for is: “methinks it is like a weasel”
 
@@ -51,3 +52,23 @@ def monkeyProgress():
 
 # print monkeyProgress()
 # print (1 - (25/26))**23
+
+def monkeyProgressHillClimber():
+	"""keep correct letters on the way up a hill"""
+	comparison = compareBillToMonkeys()
+	score = comparison[0]
+	monkeySentence = list(comparison[1])
+	i = 0
+	while i < 28:
+		if monkeySentence[i] == BillSentence[i]:
+			i += 1
+		else:
+			replacementLetter = random.choice(string.ascii_lowercase)
+			monkeySentence[i] = replacementLetter
+			if replacementLetter == BillSentence[i]:
+				i += 1
+		print ''.join(monkeySentence)
+				
+
+print monkeyProgressHillClimber()
+
